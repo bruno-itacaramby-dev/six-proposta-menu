@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu SIX no WhatsApp</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: frame de apresentação — protótipo (celular) à esquerda e a ficha da opção à direita;
+   abaixo, a estrutura do menu, o comparativo com o menu de referência e o que falta confirmar. */
+:root {
+  --bg: #edf1f3;
+  --surface: #ffffff;
+  --surface-2: #f5f7f8;
+  --ink: #13212b;
+  --muted: #566572;
+  --line: #d5dde2;
+  --accent: #0b6e82;
+  --accent-ink: #ffffff;
+  --ok: #1c7c4a;      --ok-bg: #e2f3e9;
+  --part: #8f5600;    --part-bg: #fdf0d8;
+  --team: #45576a;    --team-bg: #e5ebf0;
+  --nav: #0b6e82;     --nav-bg: #ddeff3;
+  /* WhatsApp (só dentro do celular) */
+  --wa-bg: #efeae2;   --wa-in: #ffffff;  --wa-out: #d9fdd3;
+  --wa-head: #ffffff; --wa-ink: #111b21; --wa-sub: #667781;
+  --wa-green: #008069; --wa-link: #027eb5; --wa-sheet: #ffffff;
+  --wa-chip: #ffeecd; --wa-chip-ink: #54656f; --wa-line: #e9edef;
+  --phone: #1a2329;
+  --shadow: 0 1px 2px rgb(19 33 43 / 8%), 0 12px 32px rgb(19 33 43 / 10%);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --f-phone: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e161b; --surface: #15212a; --surface-2: #1a2933; --ink: #e2e9ed; --muted: #93a3ae; --line: #2a3a45;
+    --accent: #56b8cc; --accent-ink: #0b1a20;
+    --ok: #63cf92; --ok-bg: #12301f; --part: #e9ad52; --part-bg: #362611; --team: #aebdca; --team-bg: #233340;
+    --nav: #56b8cc; --nav-bg: #11303a;
+    --wa-bg: #0b141a; --wa-in: #202c33; --wa-out: #005c4b; --wa-head: #202c33; --wa-ink: #e9edef; --wa-sub: #8696a0;
+    --wa-green: #00a884; --wa-link: #53bdeb; --wa-sheet: #111b21; --wa-chip: #182229; --wa-chip-ink: #8696a0; --wa-line: #222d34;
+    --phone: #05090c; --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 12px 32px rgb(0 0 0 / 35%);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e161b; --surface: #15212a; --surface-2: #1a2933; --ink: #e2e9ed; --muted: #93a3ae; --line: #2a3a45;
+  --accent: #56b8cc; --accent-ink: #0b1a20;
+  --ok: #63cf92; --ok-bg: #12301f; --part: #e9ad52; --part-bg: #362611; --team: #aebdca; --team-bg: #233340;
+  --nav: #56b8cc; --nav-bg: #11303a;
+  --wa-bg: #0b141a; --wa-in: #202c33; --wa-out: #005c4b; --wa-head: #202c33; --wa-ink: #e9edef; --wa-sub: #8696a0;
+  --wa-green: #00a884; --wa-link: #53bdeb; --wa-sheet: #111b21; --wa-chip: #182229; --wa-chip-ink: #8696a0; --wa-line: #222d34;
+  --phone: #05090c; --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 12px 32px rgb(0 0 0 / 35%);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.55 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+[hidden] { display: none !important; }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(30px, 4.4vw, 46px); letter-spacing: -0.01em; }
+h2 { font-size: clamp(22px, 2.6vw, 28px); }
+h3 { font-size: 17px; }
+p { margin: 0; }
+.eyebrow { font: 600 12px/1.4 var(--f-body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); max-width: 64ch; font-size: 16.5px; }
+.mono { font-family: var(--f-mono); font-size: 12.5px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* ---------- cabeçalho ---------- */
+header.top { display: grid; gap: 18px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 13.5px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; }
+.legend-item { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.legend-item small { color: var(--muted); display: block; font-size: 12.5px; line-height: 1.35; }
+.legend-item b { font-variant-numeric: tabular-nums; }
+
+.pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 2px 10px 2px 8px; font: 600 12px/1.6 var(--f-body); white-space: nowrap; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill.ok { color: var(--ok); background: var(--ok-bg); }
+.pill.parcial { color: var(--part); background: var(--part-bg); }
+.pill.equipe { color: var(--team); background: var(--team-bg); }
+.pill.nav { color: var(--nav); background: var(--nav-bg); }
+
+/* ---------- protótipo ---------- */
+.proto { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 900px) { .proto { grid-template-columns: minmax(0, 1fr); } }
+.phone-col { display: grid; gap: 14px; justify-items: center; }
+.controls { display: grid; gap: 8px; width: 100%; max-width: 360px; }
+.controls label { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 7px; padding: 7px 4px; cursor: pointer; font-weight: 500; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.reset { justify-self: end; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
+
+.phone { width: 100%; max-width: 360px; background: var(--phone); border-radius: 44px; padding: 12px; box-shadow: var(--shadow); }
+.screen { position: relative; height: 700px; max-height: calc(100vh - 120px); min-height: 560px; border-radius: 34px; overflow: hidden; display: grid; grid-template-rows: auto auto 1fr auto; background: var(--wa-bg); font-family: var(--f-phone); color: var(--wa-ink); }
+.statusbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 24px 4px; font-size: 13px; font-weight: 600; background: var(--wa-head); }
+.statusbar .icons { display: flex; gap: 5px; align-items: center; }
+.statusbar .icons i { display: block; width: 16px; height: 9px; border: 1.5px solid currentColor; border-radius: 3px; }
+.statusbar .icons i:first-child { width: 14px; border-width: 0; background: linear-gradient(90deg, currentColor 0 22%, transparent 22% 39%, currentColor 39% 61%, transparent 61% 78%, currentColor 78%); height: 9px; border-radius: 1px; }
+.wa-head { display: flex; align-items: center; gap: 10px; padding: 8px 12px 10px; background: var(--wa-head); border-bottom: 1px solid var(--wa-line); }
+.wa-head .back { font-size: 22px; line-height: 1; color: var(--wa-ink); }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 700 12px/1 var(--f-body); letter-spacing: 0.02em; flex: none; }
+.wa-head .who { min-width: 0; }
+.wa-head .who b { display: block; font-size: 15.5px; }
+.wa-head .who span { font-size: 12.5px; color: var(--wa-sub); }
+.wa-head .tag { margin-left: auto; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wa-chip-ink); background: var(--wa-chip); border-radius: 6px; padding: 3px 6px; }
+
+.chat { overflow-y: auto; padding: 14px 10px 10px; display: flex; flex-direction: column; gap: 6px; scroll-behavior: smooth; }
+.msg { max-width: 86%; padding: 7px 9px 18px; border-radius: 9px; font-size: 14.2px; line-height: 1.38; position: relative; box-shadow: 0 1px 0.5px rgb(11 20 26 / 13%); overflow-wrap: anywhere; }
+.msg .time { position: absolute; right: 8px; bottom: 3px; font-size: 10.5px; color: var(--wa-sub); }
+.msg.in { align-self: flex-start; background: var(--wa-in); border-top-left-radius: 0; }
+.msg.out { align-self: flex-end; background: var(--wa-out); border-top-right-radius: 0; }
+.msg.list { padding-bottom: 0; }
+.msg .list-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px -9px 0; padding: 10px; border-top: 1px solid var(--wa-line); color: var(--wa-link); font-weight: 500; background: transparent; border-left: 0; border-right: 0; border-bottom: 0; width: calc(100% + 18px); cursor: pointer; font-size: 14.5px; border-radius: 0 0 9px 9px; }
+.msg .list-btn::before { content: ""; width: 14px; height: 10px; background: linear-gradient(currentColor 0 2px, transparent 2px 4px, currentColor 4px 6px, transparent 6px 8px, currentColor 8px 10px); }
+.msg.list .time { position: static; display: block; text-align: right; margin-top: 2px; }
+.reply-btns { align-self: flex-start; max-width: 86%; width: 86%; display: grid; gap: 4px; margin-top: -2px; }
+.reply-btns button { background: var(--wa-in); border: 0; border-radius: 8px; padding: 9px; color: var(--wa-link); font-weight: 500; font-size: 14.5px; cursor: pointer; box-shadow: 0 1px 0.5px rgb(11 20 26 / 13%); }
+.reply-btns button:disabled { cursor: default; opacity: 0.55; }
+.doc { display: flex; gap: 10px; align-items: center; background: color-mix(in srgb, var(--wa-sub) 12%, transparent); border-radius: 7px; padding: 10px; }
+.doc .ic { width: 30px; height: 36px; border-radius: 4px; background: #d93a3a; color: #fff; display: grid; place-items: end center; font: 700 8.5px/1 var(--f-body); padding-bottom: 6px; flex: none; }
+.doc b { display: block; font-size: 13.5px; font-weight: 500; }
+.doc small { color: var(--wa-sub); font-size: 11.5px; }
+.sys { align-self: center; background: var(--wa-chip); color: var(--wa-chip-ink); font-size: 12px; border-radius: 7px; padding: 5px 10px; text-align: center; max-width: 90%; box-shadow: 0 1px 0.5px rgb(11 20 26 / 13%); }
+.typing { align-self: flex-start; background: var(--wa-in); border-radius: 9px; padding: 9px 12px; display: flex; gap: 4px; }
+.typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--wa-sub); animation: blink 1s infinite ease-in-out; }
+.typing span:nth-child(2) { animation-delay: 0.15s; } .typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+.composer { display: flex; gap: 8px; align-items: center; padding: 8px 10px 14px; background: var(--wa-bg); }
+.composer div { flex: 1; background: var(--wa-in); border-radius: 22px; padding: 10px 14px; color: var(--wa-sub); font-size: 14.5px; }
+.composer i { width: 42px; height: 42px; border-radius: 50%; background: var(--wa-green); flex: none; display: grid; place-items: center; }
+.composer i::after { content: ""; width: 10px; height: 15px; border-radius: 5px; background: #fff; }
+
+.sheet-backdrop { position: absolute; inset: 0; background: rgb(11 20 26 / 45%); display: flex; align-items: flex-end; z-index: 5; }
+.sheet { width: 100%; max-height: 82%; background: var(--wa-sheet); border-radius: 16px 16px 0 0; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
+.sheet-head { display: grid; grid-template-columns: 40px 1fr 40px; align-items: center; padding: 12px 8px 10px; border-bottom: 1px solid var(--wa-line); }
+.sheet-head h4 { margin: 0; text-align: center; font-size: 16px; font-weight: 600; }
+.sheet-head button { border: 0; background: transparent; font-size: 22px; line-height: 1; color: var(--wa-sub); cursor: pointer; padding: 4px; }
+.rows { overflow-y: auto; padding: 4px 0 10px; }
+.row { display: grid; grid-template-columns: 1fr 22px; gap: 12px; align-items: center; width: 100%; border: 0; background: transparent; text-align: left; padding: 11px 18px; cursor: pointer; border-bottom: 1px solid var(--wa-line); }
+.row:hover { background: color-mix(in srgb, var(--wa-sub) 8%, transparent); }
+.row b { display: block; font-weight: 400; font-size: 15.5px; color: var(--wa-ink); }
+.row small { display: block; color: var(--wa-sub); font-size: 13px; margin-top: 1px; }
+.row i { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--wa-sub); }
+.row.picked i { border: 6px solid var(--wa-green); }
+
+/* ficha da opção */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 18px; min-width: 0; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+@media (max-width: 900px) { .panel { position: static; } }
+.panel-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.crumb { font-size: 13px; color: var(--muted); }
+.facts { display: grid; gap: 14px; }
+.fact h4 { margin: 0 0 3px; font: 600 12px/1.4 var(--f-body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.fact p { max-width: 62ch; }
+.fact .mono { background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; display: inline-block; margin: 2px 0; }
+.limits { display: flex; flex-wrap: wrap; gap: 8px; }
+.limit { font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-variant-numeric: tabular-nums; }
+.limit.bad { border-color: var(--part); color: var(--part); }
+.hint { font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 14px; }
+
+/* ---------- estrutura ---------- */
+section { display: grid; gap: 20px; min-width: 0; }
+.section-head { display: grid; gap: 8px; }
+.tree { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.branch { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 16px 12px; display: grid; gap: 10px; align-content: start; }
+.branch-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.branch-head small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.branch ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.branch li { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.when { display: flex; gap: 4px; flex-wrap: wrap; }
+.when span { font-size: 11px; font-weight: 600; letter-spacing: 0.03em; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 0 5px; }
+.bystatus { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.bystatus div { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.bystatus ol { margin: 8px 0 0; padding-left: 20px; font-size: 14px; }
+.bystatus p { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+/* ---------- tabela ---------- */
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+th { font: 600 12px/1.4 var(--f-body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); }
+tbody tr:last-child td { border-bottom: 0; }
+td.n { color: var(--muted); font-variant-numeric: tabular-nums; width: 36px; }
+td .where { color: var(--accent); font-weight: 500; }
+
+/* ---------- pendências e notas ---------- */
+.asks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.ask { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.ask .k { font: 600 12px/1.4 var(--f-body); color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
+.ask p { font-size: 14px; color: var(--muted); }
+.ask p b { color: var(--ink); font-weight: 600; }
+.notes { display: grid; gap: 10px; margin: 0; padding-left: 20px; max-width: 80ch; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chat { scroll-behavior: auto; }
+  .typing span { animation: none; opacity: 0.6; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="eyebrow">SIX Benefícios · Atendimento no WhatsApp</span>
+    <h1>Proposta de menu do bot</h1>
+    <p class="lede">As 16 opções do menu de referência viram 6 opções principais com submenus. Cada opção mostra o que o bot resolve sozinho com a API da Digital Saúde e o que segue para a equipe, já com o contrato do cliente identificado.</p>
+    <div class="meta"><span>26/10/2026</span><span>API testada nesta data, só com consultas</span><span>Dados de exemplo no protótipo</span></div>
+    <div class="legend" id="legend"></div>
+  </header>
+
+  <section aria-labelledby="t-proto">
+    <div class="section-head">
+      <span class="eyebrow">Protótipo</span>
+      <h2 id="t-proto">Navegue como o cliente</h2>
+      <p class="lede">Toque em <b>Ver opções</b> no celular. Troque a situação do plano para ver o menu se ajustar.</p>
+    </div>
+    <div class="proto">
+      <div class="phone-col">
+        <div class="controls">
+          <label id="lbl-status">Situação do plano do cliente</label>
+          <div class="seg" role="group" aria-labelledby="lbl-status" id="seg">
+            <button type="button" id="st-ativo" data-st="ativo" aria-pressed="true">Ativo</button>
+            <button type="button" id="st-suspenso" data-st="suspenso" aria-pressed="false">Suspenso</button>
+            <button type="button" id="st-cancelado" data-st="cancelado" aria-pressed="false">Cancelado</button>
+          </div>
+          <button type="button" class="reset" id="reset">Reiniciar conversa</button>
+        </div>
+        <div class="phone" aria-label="Simulação da conversa no WhatsApp">
+          <div class="screen">
+            <div class="statusbar"><span>9:41</span><span class="icons"><i></i><i></i></span></div>
+            <div class="wa-head"><span class="back" aria-hidden="true">‹</span><span class="avatar">SIX</span><span class="who"><b>SIX Benefícios</b><span>online</span></span><span class="tag">exemplo</span></div>
+            <div class="chat" id="chat" aria-live="polite"></div>
+            <div class="composer" aria-hidden="true"><div>Mensagem</div><i></i></div>
+            <div class="sheet-backdrop" id="sheet" hidden>
+              <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+                <div class="sheet-head"><button type="button" id="sheet-close" aria-label="Fechar">×</button><h4 id="sheet-title">Opções</h4><span></span></div>
+                <div class="rows" id="rows"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="panel" id="panel" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-tree">
+    <div class="section-head">
+      <span class="eyebrow">Estrutura</span>
+      <h2 id="t-tree">O menu inteiro de uma vez</h2>
+      <p class="lede">Seis opções no menu principal. Nenhuma lista passa de 10 itens, o limite da lista do WhatsApp.</p>
+    </div>
+    <div class="tree" id="tree"></div>
+    <h3>O menu muda conforme a situação do plano</h3>
+    <div class="bystatus" id="bystatus"></div>
+  </section>
+
+  <section aria-labelledby="t-ref">
+    <div class="section-head">
+      <span class="eyebrow">Comparativo</span>
+      <h2 id="t-ref">Menu de referência e o que a API permite</h2>
+      <p class="lede">As 16 opções do menu de referência, o que o bot consegue fazer em cada uma e onde ela fica na proposta.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Opção de referência</th><th>Situação</th><th>O que o bot faz</th><th>Dado da API</th><th>Na proposta</th></tr></thead>
+        <tbody id="ref"></tbody>
+      </table>
+    </div>
+    <p class="hint">"Encerrar atendimento" não precisa de opção própria: ele já aparece em "Posso te ajudar com mais alguma coisa?" ao fim de cada assunto.</p>
+  </section>
+
+  <section aria-labelledby="t-ask">
+    <div class="section-head">
+      <span class="eyebrow">Para destravar</span>
+      <h2 id="t-ask">O que confirmar com a Digital Saúde</h2>
+      <p class="lede">Cada resposta abaixo transforma uma opção da equipe em opção que o bot resolve sozinho.</p>
+    </div>
+    <div class="asks" id="asks"></div>
+  </section>
+
+  <section aria-labelledby="t-notes">
+    <div class="section-head">
+      <span class="eyebrow">Observações</span>
+      <h2 id="t-notes">Decisões de desenho</h2>
+    </div>
+    <ul class="notes">
+      <li><b>Por que submenus.</b> A lista do WhatsApp aceita até 10 opções, com títulos de até 24 caracteres. O menu de referência tem 17 opções com títulos longos, o que só cabe num WhatsApp Flow (uma tela própria dentro do WhatsApp). Com submenus, o bot usa a lista comum, mais simples de manter.</li>
+      <li><b>Valores do contrato.</b> Em parte dos contratos o valor da mensalidade vem zerado e o saldo devedor vem com o sinal trocado. Por isso o bot mostra o valor de cada boleto, que vem certo.</li>
+      <li><b>Proposta em PDF.</b> O arquivo da proposta tem cerca de 7,5 MB e o servidor o identifica como texto. Antes de liberar a opção, vale testar a abertura no celular.</li>
+      <li><b>Situação do plano.</b> A situação muda rápido: contratos ativos passam a suspensos ou cancelados em poucos dias. Por isso o menu se ajusta à situação em vez de mostrar opções que não funcionam.</li>
+    </ul>
+  </section>
+
+  <footer>Protótipo de apresentação. Nomes, valores, linha digitável e links do celular são fictícios.</footer>
+</div>
+
+<script>
+"use strict";
+const CLIENTE = "MARIA";
+const LABEL = { ok: "Bot resolve", parcial: "Bot + equipe", equipe: "Equipe", nav: "Submenu" };
+const DESC_LABEL = {
+  ok: "o bot entrega a informação sozinho, pela API",
+  parcial: "o bot mostra os dados da API e passa para a equipe",
+  equipe: "a API não tem o dado; vai direto para a equipe"
+};
+
+const STATUS = {
+  ativo: {
+    label: "Ativo",
+    intro: "Cadastro confirmado, " + CLIENTE + "!\n\nMe conte o que você precisa resolver.",
+    main: ["boletos", "carteirinha", "plano", "solicitacoes", "outros"],
+    nota: "Plano ativo: o cliente vê carteirinha, reajuste e todas as solicitações."
+  },
+  suspenso: {
+    label: "Suspenso",
+    intro: "Cadastro confirmado, " + CLIENTE + "!\n\nSeu plano está **suspenso** porque há pagamento em aberto. Como posso ajudar?",
+    main: ["reativar", "boletos", "plano", "solicitacoes", "outros"],
+    nota: "Plano suspenso: \"Reativar meu plano\" vem primeiro. A carteirinha some, porque a operadora só libera para plano ativo."
+  },
+  cancelado: {
+    label: "Cancelado",
+    intro: "Cadastro confirmado, " + CLIENTE + "!\n\nSeu plano foi cancelado em **30/09/2026**. Como posso ajudar?",
+    main: ["boletos", "documentos", "carta", "outros"],
+    nota: "Plano cancelado: o bot avisa a data do cancelamento e mostra só o que ainda faz sentido."
+  }
+};
+
+const BOLETO_ATIVO = [{ st: "Emitida", comp: "10/2026", venc: "20/10/2026", valor: "R$ 189,90", linha: "03399.07453 10500.000004 12345.601011 1 15930000018990", cod: "EXEMPLO01" }];
+const BOLETOS_ABERTOS = [
+  { st: "Vencida", comp: "09/2026", venc: "20/09/2026", valor: "R$ 189,90", linha: "03399.07453 10500.000004 11111.201015 4 15600000018990", cod: "EXEMPLO02" },
+  { st: "Vencida", comp: "10/2026", venc: "20/10/2026", valor: "R$ 189,90", linha: "03399.07453 10500.000004 12345.601011 1 15930000018990", cod: "EXEMPLO01" }
+];
+function boletoMsgs(st) {
+  const lista = st === "ativo" ? BOLETO_ATIVO : BOLETOS_ABERTOS;
+  return lista.map((b, i) => ({ t: "text", text:
+    "📄 **Boleto " + (i + 1) + " de " + lista.length + "**\n\n**Status:** " + b.st + "\n**Competência:** " + b.comp +
+    "\n**Vencimento:** " + b.venc + "\n**Valor:** " + b.valor + "\n\n**Linha digitável:**\n" + b.linha +
+    "\n\n**Boleto em PDF:**\n[link]digitalsaude.com.br/…/ImprimirFatura?codigo=" + b.cod }));
+}
+const handoff = (fila, texto) => [{ t: "text", text: texto }, { t: "sys", text: "Conversa transferida para a fila " + fila }];
+
+const NODES = {
+  boletos: { kind: "menu", title: "Boletos e pagamentos", desc: "2ª via, Imposto de Renda e débitos", status: "nav",
+    prompt: "Boletos e pagamentos. O que você precisa?", sheet: "Boletos e pagamentos",
+    children: ["segundaVia", "ir", "email", "outrosFin", "voltar"],
+    faz: "Reúne tudo que é financeiro num só lugar. Três das quatro opções o bot resolve sozinho." },
+  segundaVia: { kind: "leaf", title: "2ª via do boleto", desc: "Linha digitável e PDF dos boletos em aberto", status: "ok",
+    bot: (st) => boletoMsgs(st),
+    faz: "Busca todos os contratos do CPF, junta os boletos emitidos e vencidos e envia um por mensagem, com linha digitável e PDF.",
+    api: ["contrato/procurarPorCpfTitular", "fatura/procurarPorContrato (Emitida e Vencida)"],
+    falta: "Pix ainda não: o campo de Pix vem vazio em todas as faturas testadas." },
+  ir: { kind: "leaf", title: "Imposto de Renda", desc: "Demonstrativo de pagamentos do ano em PDF", status: "ok",
+    bot: () => [{ t: "doc", name: "Demonstrativo IR 2025.pdf", meta: "PDF · 1 página" }, { t: "text", text: "Este é o seu demonstrativo de pagamentos de 2025, para a declaração do Imposto de Renda." }],
+    faz: "Envia o demonstrativo do ano em PDF. O link abre sem login.",
+    api: ["demonstrativoPagamento/procurarPorContrato"],
+    falta: "Nada. Só aparece para quem tem pagamentos no ano." },
+  email: { kind: "leaf", title: "Boletos por e-mail", desc: "Envio dos boletos em aberto para o seu e-mail", status: "ok",
+    bot: () => [{ t: "text", text: "Pronto! Enviei os boletos em aberto para o e-mail **ma•••@gmail.com**." }],
+    faz: "Pede à Digital Saúde que envie os boletos emitidos e vencidos para o e-mail do cadastro.",
+    api: ["fatura/enviarFaturaVencidaPorContrato"],
+    falta: "O endpoint existe, mas não foi testado: ele dispara um e-mail real para o cliente." },
+  outrosFin: { kind: "leaf", title: "Outros financeiros", desc: "Recibo, vencimento e negociação", status: "equipe",
+    bot: () => handoff("Financeiro", "Certo! Vou te encaminhar para a nossa equipe financeira. Ela já recebe o seu contrato e o assunto."),
+    faz: "Encaminha para a equipe financeira com o contrato identificado.",
+    api: [],
+    falta: "Recibo de pagamento: a API não devolve faturas pagas. Troca do dia de vencimento: não há endpoint." },
+  carteirinha: { kind: "leaf", title: "Carteirinha e app", desc: "Carteirinha provisória e canais da operadora", status: "ok",
+    bot: () => [{ t: "doc", name: "Carteirinha - MARIA SOUZA.pdf", meta: "PDF · 1 página" },
+      { t: "text", text: "Para ver a rede credenciada e o atendimento da operadora, baixe o app da **Amélia Saúde**:\n[link]link do app da operadora" }],
+    faz: "Envia a carteirinha provisória em PDF de cada beneficiário ativo e os canais da operadora do cliente.",
+    api: ["beneficiarioList.linkCarteiraProvisoria", "convenio.produto.operadora"],
+    falta: "Os links de app, manual e rede credenciada vêm vazios na API. Como são só duas operadoras (Amélia Saúde e Hapvida), entram como texto fixo no bot." },
+  plano: { kind: "menu", title: "Meu plano", desc: "Resumo, reajuste e documentos", status: "nav",
+    prompt: "Meu plano. O que você quer ver?", sheet: "Meu plano",
+    children: ["resumo", "reajuste", "documentos", "trocar", "voltar"],
+    faz: "Informações do contrato. O bot responde sozinho, exceto a troca de plano." },
+  resumo: { kind: "leaf", title: "Resumo do plano", desc: "Plano, operadora, situação e dependentes", status: "ok",
+    bot: (st) => [{ t: "text", text: "📋 **Seu plano**\n\n**Plano:** CARIOCA 10 SEM COPART\n**Operadora:** Amélia Saúde\n**Situação:** " +
+      (st === "ativo" ? "Ativo desde 01/08/2026" : st === "suspenso" ? "Suspenso" : "Cancelado em 30/09/2026") +
+      "\n**Beneficiários:** você e 1 dependente\n**Opcionais:** Odonto" }],
+    faz: "Monta o resumo com plano, operadora, situação, beneficiários e opcionais.",
+    api: ["contrato (plano, statusContrato, beneficiarioList, opcionalList)"],
+    falta: "O valor da mensalidade fica de fora: vem zerado em parte dos contratos." },
+  reajuste: { kind: "leaf", title: "Reajuste", desc: "Data do próximo reajuste do seu plano", status: "ok",
+    bot: () => [{ t: "text", text: "O próximo reajuste do seu plano está previsto para **01/08/2027**.\n\nPara saber o percentual, fale com a nossa equipe." }],
+    faz: "Informa a data do próximo reajuste do convênio do cliente.",
+    api: ["convenio.dataProximoReajuste"],
+    falta: "O percentual do reajuste não vem na API." },
+  documentos: { kind: "leaf", title: "Documentos", desc: "Proposta assinada e Imposto de Renda", status: "parcial",
+    bot: () => [{ t: "doc", name: "Proposta assinada.pdf", meta: "PDF" }, { t: "doc", name: "Demonstrativo IR 2025.pdf", meta: "PDF · 1 página" },
+      { t: "text", text: "Precisa de outro documento, como a carta de permanência? Escolha **Solicitações** no menu." }],
+    faz: "Envia a proposta assinada e o demonstrativo de IR. Outros documentos seguem para a equipe.",
+    api: ["contrato.anexoList", "demonstrativoPagamento/procurarPorContrato"],
+    falta: "Carta de permanência e outros documentos não vêm na API. A proposta precisa de teste de abertura no celular." },
+  trocar: { kind: "leaf", title: "Trocar de plano", desc: "Conheça outros planos com a nossa equipe", status: "equipe",
+    bot: () => handoff("Comercial", "Certo! Vou te encaminhar para a nossa equipe comercial, que apresenta as opções de plano."),
+    faz: "Encaminha para a equipe comercial.",
+    api: [],
+    falta: "A tabela de preços vem sem valores. A simulação da API (cálculo) grava um registro no sistema e precisa de autorização." },
+  reativar: { kind: "leaf", title: "Reativar meu plano", desc: "Veja o que está em aberto e regularize", status: "parcial",
+    bot: () => [{ t: "text", text: "Seu plano está suspenso porque há **2 boletos em aberto**, no total de **R$ 379,80**.\n\nDepois do pagamento, a reativação é feita pela nossa equipe." },
+      { t: "buttons", text: "Como prefere seguir?", buttons: [{ label: "Ver boletos", go: "segundaVia" }, { label: "Falar com a equipe", go: "handoff:Financeiro" }] }],
+    faz: "Mostra a situação do plano e quanto está em aberto, e oferece os boletos para pagar.",
+    api: ["contrato.statusContrato", "fatura/procurarPorContrato"],
+    falta: "Não há endpoint para reativar o plano; a equipe faz a reativação.", noFollow: true },
+  solicitacoes: { kind: "menu", title: "Solicitações", desc: "Cadastro, dependentes, opcionais e cancelamento", status: "nav",
+    prompt: "Solicitações. Qual delas?", sheet: "Solicitações",
+    children: ["alteracao", "incluirDep", "excluirDep", "opcionais", "carta", "cancelar", "obito", "voltar"],
+    faz: "Pedidos que mudam o contrato. Quem executa é a equipe, mas o bot já mostra os dados que a API tem." },
+  alteracao: { kind: "leaf", title: "Alteração cadastral", desc: "Endereço, telefone ou e-mail", status: "parcial",
+    bot: () => handoff("Cadastro", "Estes são os dados do seu cadastro:\n\n**Endereço:** Rua das Acácias, 120, Rio de Janeiro/RJ\n**Celular:** (21) 9••••-4821\n**E-mail:** ma•••@gmail.com\n\nVou te encaminhar para a equipe atualizar o que for preciso."),
+    faz: "Mostra os dados atuais do cadastro e encaminha para a equipe.",
+    api: ["beneficiarioList (endereço, telefone, e-mail)"],
+    falta: "Não há endpoint para alterar o cadastro." },
+  incluirDep: { kind: "leaf", title: "Incluir dependente", desc: "Carências e dados para a inclusão", status: "parcial",
+    bot: () => handoff("Cadastro", "A carência do novo dependente depende do plano anterior dele:\n\n• Sem plano anterior (contratual)\n• Com plano anterior de 1 a 6 meses\n• Com plano anterior de 6 a 12 meses\n• Com plano anterior acima de 12 meses\n\nVou te encaminhar para a equipe seguir com a inclusão."),
+    faz: "Informa as carências do convênio do cliente e encaminha para a equipe.",
+    api: ["carencia/procurarPorConvenio"],
+    falta: "Não há endpoint para incluir beneficiário, e a tabela de preços vem sem valores." },
+  excluirDep: { kind: "leaf", title: "Excluir dependente", desc: "Veja quem está no plano", status: "parcial",
+    bot: () => handoff("Cadastro", "Encontrei 1 dependente no seu plano: **JOÃO SOUZA**.\n\nVou te encaminhar para a equipe confirmar a exclusão."),
+    faz: "Lista os dependentes do contrato e encaminha para a equipe.",
+    api: ["beneficiarioList"],
+    falta: "Não há endpoint para excluir beneficiário." },
+  opcionais: { kind: "leaf", title: "Excluir dental/opcional", desc: "Veja o que você tem contratado", status: "parcial",
+    bot: () => handoff("Cadastro", "Você tem este opcional contratado:\n\n• Odonto - DentSim 10\n\nVou te encaminhar para a equipe fazer a exclusão."),
+    faz: "Mostra os opcionais contratados (como o plano dental) e encaminha para a equipe.",
+    api: ["contrato.opcionalList"],
+    falta: "Não há endpoint para excluir opcional." },
+  carta: { kind: "leaf", title: "Carta de permanência", desc: "Solicite à nossa equipe", status: "equipe",
+    bot: () => handoff("Documentos", "Certo! Vou te encaminhar para a equipe emitir a sua carta de permanência."),
+    faz: "Encaminha para a equipe, com o contrato identificado.",
+    api: [],
+    falta: "A API não gera a carta. As datas de entrada e saída do plano ajudam a equipe a emitir." },
+  cancelar: { kind: "leaf", title: "Cancelar contrato", desc: "Fale com a equipe sobre o cancelamento", status: "parcial",
+    bot: () => handoff("Cancelamento", "Certo! Vou te encaminhar para a nossa equipe tratar do cancelamento."),
+    faz: "Encaminha para a equipe. Se o contrato já estiver cancelado, o bot informa a data.",
+    api: ["contrato.statusContrato", "contrato.dataExclusao"],
+    falta: "Não há endpoint para cancelar." },
+  obito: { kind: "leaf", title: "Cancelamento por óbito", desc: "Orientação sobre a documentação", status: "equipe",
+    bot: () => handoff("Cancelamento", "Sentimos muito pela sua perda. Vou te encaminhar para a nossa equipe, que vai orientar sobre a documentação."),
+    faz: "Encaminha para a equipe com cuidado na mensagem.",
+    api: [],
+    falta: "Exige documentação; não há endpoint." },
+  outros: { kind: "leaf", title: "Outros assuntos", desc: "Fale com a nossa equipe", status: "equipe",
+    bot: () => handoff("Atendimento", "Certo! Vou te encaminhar para um dos nossos atendentes."),
+    faz: "Encaminha para a fila geral de atendimento.",
+    api: [],
+    falta: "Assunto livre." },
+  voltar: { kind: "back", title: "Voltar ao menu", desc: "Volta para as opções principais" }
+};
+
+const REF = [
+  ["Boleto/Pix para pagamento", "ok", "Linha digitável e PDF de cada boleto em aberto. Pix ainda não: o campo vem vazio.", "fatura/procurarPorContrato", "Boletos e pagamentos › 2ª via do boleto"],
+  ["Outros assuntos financeiros", "parcial", "Envia o demonstrativo de IR e os boletos. Recibo de pagamento e troca de vencimento ficam com a equipe.", "demonstrativoPagamento", "Boletos e pagamentos › Imposto de Renda e Outros financeiros"],
+  ["Reativar o plano", "parcial", "Mostra a situação do plano e o que está em aberto. A reativação é feita pela equipe.", "statusContrato e faturas", "Reativar meu plano (plano suspenso)"],
+  ["Carteirinha, Canais App da operadora", "ok", "Carteirinha provisória em PDF (plano ativo) e canais da operadora em texto fixo.", "linkCarteiraProvisoria", "Carteirinha e app"],
+  ["Inclusão de dependente", "parcial", "Informa as carências do convênio. A inclusão é feita pela equipe.", "carencia/procurarPorConvenio", "Solicitações › Incluir dependente"],
+  ["Reajuste", "ok", "Data do próximo reajuste. O percentual não vem na API.", "convenio.dataProximoReajuste", "Meu plano › Reajuste"],
+  ["Alternativas de plano", "equipe", "A tabela de preços vem sem valores.", "tabela/procurarPorConvenio (sem preços)", "Meu plano › Trocar de plano"],
+  ["Carta de Permanência", "equipe", "A API não gera o documento; a equipe emite.", "—", "Solicitações › Carta de permanência"],
+  ["Outros documentos", "parcial", "Envia a proposta assinada e o IR. Outros documentos ficam com a equipe.", "contrato.anexoList", "Meu plano › Documentos"],
+  ["Alteração cadastral", "parcial", "Mostra os dados atuais. A alteração é feita pela equipe.", "beneficiarioList", "Solicitações › Alteração cadastral"],
+  ["Cancelamento do contrato", "parcial", "Se já estiver cancelado, informa a data. Senão, encaminha.", "statusContrato e dataExclusao", "Solicitações › Cancelar contrato"],
+  ["Cancelamento por óbito", "equipe", "Exige documentação.", "—", "Solicitações › Cancelamento por óbito"],
+  ["Exclusão de dependente", "parcial", "Lista os dependentes do contrato. A exclusão é feita pela equipe.", "beneficiarioList", "Solicitações › Excluir dependente"],
+  ["Exclusão plano dental", "parcial", "Mostra o opcional contratado. A exclusão é feita pela equipe.", "opcionalList", "Solicitações › Excluir dental/opcional"],
+  ["Exclusão de opcionais", "parcial", "Mostra os opcionais contratados. A exclusão é feita pela equipe.", "opcionalList", "Solicitações › Excluir dental/opcional"],
+  ["Outros assuntos", "equipe", "Encaminha para a equipe.", "—", "Outros assuntos"]
+];
+
+const ASKS = [
+  ["Pix", "O campo de Pix vem <b>vazio em todas as faturas</b>. Se a Digital Saúde emitir Pix, o bot passa a enviar o código copia e cola junto com o boleto."],
+  ["Faturas pagas", "A API <b>não devolve faturas já pagas</b>. Com um status ou endpoint para elas, o bot passa a enviar o recibo de pagamento."],
+  ["Preços dos planos", "A tabela de preços vem <b>sem valores</b>. Liberar os preços, ou autorizar o uso da simulação de cálculo, destrava \"Trocar de plano\" e o preço do dependente."],
+  ["Links das operadoras", "Os links de app, manual e rede credenciada vêm <b>vazios</b>. Basta enviar os links da Amélia Saúde e da Hapvida para o bot."],
+  ["Abrir solicitações no sistema", "A API permite registrar <b>pendências e notificações</b> no contrato. Com os códigos certos, o bot registra o pedido no sistema da Digital Saúde, com protocolo, além de passar para a equipe."]
+];
+
+/* ---------- utilidades ---------- */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+  .replace(/\[link\]([^\n]+)/g, '<span style="color:var(--wa-link);text-decoration:underline">$1</span>').replace(/\n/g, "<br>");
+const pill = (st) => '<span class="pill ' + st + '">' + LABEL[st] + "</span>";
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait = (ms) => new Promise((r) => setTimeout(r, reduce ? 0 : ms));
+let hora = 9 * 60 + 41;
+const agora = () => { const h = Math.floor(hora / 60), m = hora % 60; return h + ":" + String(m).padStart(2, "0"); };
+
+/* ---------- estado ---------- */
+let status = "ativo";
+let busy = false;
+const chat = $("#chat");
+
+function menuRows(id) { return id === "main" ? STATUS[status].main : NODES[id].children; }
+
+function scrollChat() { chat.scrollTop = chat.scrollHeight; }
+function addUser(text) {
+  const el = document.createElement("div");
+  el.className = "msg out";
+  el.innerHTML = fmt(text) + '<span class="time">' + agora() + " ✓✓</span>";
+  chat.appendChild(el); scrollChat();
+}
+async function addBot(m) {
+  const t = document.createElement("div");
+  t.className = "typing"; t.innerHTML = "<span></span><span></span><span></span>";
+  chat.appendChild(t); scrollChat();
+  await wait(m.t === "sys" ? 150 : 520);
+  t.remove();
+  let el;
+  if (m.t === "sys") {
+    el = document.createElement("div"); el.className = "sys"; el.textContent = m.text;
+  } else if (m.t === "doc") {
+    el = document.createElement("div"); el.className = "msg in";
+    el.innerHTML = '<div class="doc"><span class="ic">PDF</span><span><b>' + esc(m.name) + "</b><small>" + esc(m.meta) + '</small></span></div><span class="time">' + agora() + "</span>";
+  } else if (m.t === "list") {
+    el = document.createElement("div"); el.className = "msg in list";
+    el.innerHTML = fmt(m.text) + '<span class="time">' + agora() + '</span><button type="button" class="list-btn">Ver opções</button>';
+    el.querySelector(".list-btn").addEventListener("click", () => openSheet(m.menu));
+  } else if (m.t === "buttons") {
+    el = document.createElement("div"); el.className = "msg in";
+    el.innerHTML = fmt(m.text) + '<span class="time">' + agora() + "</span>";
+    chat.appendChild(el);
+    const box = document.createElement("div"); box.className = "reply-btns";
+    m.buttons.forEach((b) => {
+      const bt = document.createElement("button"); bt.type = "button"; bt.textContent = b.label;
+      bt.addEventListener("click", () => { if (busy) return; box.querySelectorAll("button").forEach((x) => (x.disabled = true)); go(b.go, b.label); });
+      box.appendChild(bt);
+    });
+    el = box;
+  } else {
+    el = document.createElement("div"); el.className = "msg in";
+    el.innerHTML = fmt(m.text) + '<span class="time">' + agora() + "</span>";
+  }
+  chat.appendChild(el); scrollChat();
+}
+async function run(list) { for (const m of list) await addBot(m); }
+
+/* ---------- lista (bottom sheet) ---------- */
+function openSheet(menu) {
+  if (busy) return;
+  const rows = menuRows(menu);
+  $("#sheet-title").textContent = menu === "main" ? "Como posso ajudar?" : NODES[menu].sheet;
+  $("#rows").innerHTML = rows.map((id) =>
+    '<button type="button" class="row" data-id="' + id + '"><span><b>' + esc(NODES[id].title) + "</b><small>" + esc(NODES[id].desc) + "</small></span><i></i></button>").join("");
+  $("#rows").querySelectorAll(".row").forEach((r) => r.addEventListener("click", async () => {
+    r.classList.add("picked"); await wait(160); closeSheet(); go(r.dataset.id);
+  }));
+  $("#sheet").hidden = false;
+  showPanel(menu);
+  $("#rows .row")?.focus();
+}
+function closeSheet() { $("#sheet").hidden = true; }
+
+/* ---------- navegação ---------- */
+async function go(target, label) {
+  if (busy) return;
+  busy = true; hora += 1;
+  try {
+    if (target === "menu:main" || target === "voltar") {
+      addUser(label || NODES.voltar.title);
+      showPanel("main");
+      await run([{ t: "list", text: "Me conte o que você precisa resolver.", menu: "main" }]);
+    } else if (target === "fim") {
+      addUser(label);
+      await run([{ t: "text", text: "Obrigado pelo contato, " + CLIENTE + "! Até mais." }, { t: "sys", text: "Atendimento encerrado" }]);
+    } else if (target.startsWith("handoff:")) {
+      addUser(label);
+      await run(handoff(target.split(":")[1], "Certo! Vou te encaminhar para a nossa equipe. Ela já recebe o seu contrato e o assunto."));
+    } else {
+      const n = NODES[target];
+      addUser(label || n.title);
+      showPanel(target);
+      if (n.kind === "menu") {
+        await run([{ t: "list", text: n.prompt, menu: target }]);
+      } else {
+        const msgs = n.bot(status);
+        await run(msgs);
+        const handedOff = msgs.some((m) => m.t === "sys");
+        if (!handedOff && !n.noFollow) {
+          await run([{ t: "buttons", text: "Posso te ajudar com mais alguma coisa?", buttons: [{ label: "Sim", go: "menu:main" }, { label: "Não, encerrar", go: "fim" }] }]);
+        }
+      }
+    }
+  } finally { busy = false; }
+}
+
+async function start() {
+  busy = true;
+  chat.innerHTML = ""; closeSheet(); hora = 9 * 60 + 41;
+  showPanel("main");
+  addUser("12345678909");
+  await run([{ t: "text", text: "Um momento, estou consultando o seu cadastro." }, { t: "list", text: STATUS[status].intro, menu: "main" }]);
+  busy = false;
+}
+
+/* ---------- ficha da opção ---------- */
+function limitsHtml(rows) {
+  const maxT = Math.max(...rows.map((id) => NODES[id].title.length));
+  const maxD = Math.max(...rows.map((id) => NODES[id].desc.length));
+  const item = (txt, bad) => '<span class="limit' + (bad ? " bad" : "") + '">' + txt + "</span>";
+  return '<div class="limits">' + item(rows.length + " de 10 opções", rows.length > 10) + item("título mais longo: " + maxT + " de 24 caracteres", maxT > 24) + item("descrição mais longa: " + maxD + " de 72", maxD > 72) + "</div>";
+}
+function showPanel(id) {
+  const p = $("#panel");
+  if (id === "main") {
+    const rows = STATUS[status].main;
+    p.innerHTML = '<div class="panel-head"><span class="crumb">Plano ' + STATUS[status].label.toLowerCase() + "</span>" + pill("nav") + "</div>" +
+      "<h3>Menu principal</h3>" +
+      '<div class="facts"><div class="fact"><h4>O que o cliente vê</h4><p>' + esc(STATUS[status].nota) + "</p></div>" +
+      '<div class="fact"><h4>Limites da lista do WhatsApp</h4>' + limitsHtml(rows) + "</div></div>" +
+      '<p class="hint">Toque em uma opção no celular para ver o que o bot faz, de onde vem o dado e o que fica com a equipe.</p>';
+    return;
+  }
+  const n = NODES[id];
+  const parent = Object.keys(NODES).find((k) => NODES[k].children && NODES[k].children.includes(id) && k !== id);
+  const crumb = parent ? "Menu principal › " + NODES[parent].title : "Menu principal";
+  let html = '<div class="panel-head"><span class="crumb">' + esc(crumb) + "</span>" + pill(n.status) + "</div><h3>" + esc(n.title) + "</h3>";
+  if (n.kind === "menu") {
+    html += '<div class="facts"><div class="fact"><h4>O que reúne</h4><p>' + esc(n.faz) + "</p></div>" +
+      '<div class="fact"><h4>Opções</h4><p>' + n.children.filter((c) => c !== "voltar").map((c) => esc(NODES[c].title) + " " + pill(NODES[c].status)).join("<br>") + "</p></div>" +
+      '<div class="fact"><h4>Limites da lista do WhatsApp</h4>' + limitsHtml(n.children) + "</div></div>";
+  } else {
+    html += '<div class="facts"><div class="fact"><h4>O que o bot faz</h4><p>' + esc(n.faz) + "</p></div>" +
+      '<div class="fact"><h4>Dado que vem da API</h4><p>' + (n.api.length ? n.api.map((a) => '<span class="mono">' + esc(a) + "</span>").join("<br>") : "Nenhum. A opção vai direto para a equipe.") + "</p></div>" +
+      '<div class="fact"><h4>O que não vem pela API</h4><p>' + esc(n.falta) + "</p></div></div>" +
+      '<p class="hint">' + LABEL[n.status] + ": " + DESC_LABEL[n.status] + ".</p>";
+  }
+  p.innerHTML = html;
+}
+
+/* ---------- seções estáticas geradas dos mesmos dados ---------- */
+function renderLegend() {
+  const count = (st) => REF.filter((r) => r[1] === st).length;
+  $("#legend").innerHTML = ["ok", "parcial", "equipe"].map((st) =>
+    '<div class="legend-item">' + pill(st) + "<span><b>" + count(st) + " de " + REF.length + "</b> opções de referência<small>" + DESC_LABEL[st] + "</small></span></div>").join("");
+}
+function renderTree() {
+  const top = ["boletos", "carteirinha", "plano", "reativar", "solicitacoes", "outros"];
+  const quando = (id) => Object.keys(STATUS).filter((st) => STATUS[st].main.includes(id)).map((st) => "<span>" + STATUS[st].label + "</span>").join("");
+  $("#tree").innerHTML = top.map((id) => {
+    const n = NODES[id];
+    const itens = n.kind === "menu" ? n.children.filter((c) => c !== "voltar") : [];
+    return '<div class="branch"><div class="branch-head"><div><h3>' + esc(n.title) + "</h3><small>" + esc(n.desc) + "</small></div>" + pill(n.status) + "</div>" +
+      '<div class="when" title="Em quais situações aparece no menu principal">' + quando(id) + "</div>" +
+      (itens.length ? "<ul>" + itens.map((c) => "<li><span>" + esc(NODES[c].title) + "</span>" + pill(NODES[c].status) + "</li>").join("") + "</ul>" : "") + "</div>";
+  }).join("");
+  $("#bystatus").innerHTML = Object.keys(STATUS).map((st) =>
+    "<div><h3>Plano " + STATUS[st].label.toLowerCase() + "</h3><ol>" + STATUS[st].main.map((id) => "<li>" + esc(NODES[id].title) + "</li>").join("") + "</ol><p>" + esc(STATUS[st].nota) + "</p></div>").join("");
+}
+function renderRef() {
+  $("#ref").innerHTML = REF.map((r, i) =>
+    '<tr><td class="n">' + (i + 1) + "</td><td><b>" + esc(r[0]) + "</b></td><td>" + pill(r[1]) + "</td><td>" + esc(r[2]) + '</td><td><span class="mono">' + esc(r[3]) + '</span></td><td class="where">' + esc(r[4]) + "</td></tr>").join("");
+}
+function renderAsks() {
+  $("#asks").innerHTML = ASKS.map((a) => '<div class="ask"><span class="k">' + esc(a[0]) + "</span><p>" + a[1] + "</p></div>").join("");
+}
+
+/* conferência dos limites do WhatsApp (aparece no console se algo passar) */
+Object.entries(NODES).forEach(([id, n]) => {
+  if (n.title.length > 24) console.warn("Título acima de 24 caracteres:", id, n.title);
+  if (n.desc && n.desc.length > 72) console.warn("Descrição acima de 72 caracteres:", id, n.desc);
+  if (n.children && n.children.length > 10) console.warn("Lista com mais de 10 opções:", id);
+});
+Object.entries(STATUS).forEach(([st, s]) => { if (s.main.length > 10) console.warn("Menu principal com mais de 10 opções:", st); });
+
+/* ---------- eventos ---------- */
+$("#seg").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-st]");
+  if (!b || busy) return;
+  status = b.dataset.st;
+  $("#seg").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  start();
+});
+$("#reset").addEventListener("click", () => { if (!busy) start(); });
+$("#sheet-close").addEventListener("click", closeSheet);
+$("#sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") closeSheet(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#sheet").hidden) closeSheet(); });
+
+renderLegend(); renderTree(); renderRef(); renderAsks();
+start();
+</script>
+</body>
+</html>
